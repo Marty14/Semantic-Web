@@ -111,7 +111,7 @@ Bash
 ### python3 debug_onto.py
 ### python3 debug_properties.py
 
-Come Usare il Progetto
+**Come Usare il Progetto**
 Setup Iniziale
 Installa dipendenze:
 

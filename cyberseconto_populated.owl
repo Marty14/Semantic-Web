@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto"
+         xmlns="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#"
+         xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+         xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto"/>
+
+<owl:ObjectProperty rdf:about="#dependsOn">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="#System"/>
+  <rdfs:range rdf:resource="#System"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#exploits">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdfs:domain rdf:resource="#Attack"/>
+  <rdfs:range rdf:resource="#Vulnerability"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasVulnerability">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdfs:domain rdf:resource="#System"/>
+  <rdfs:range rdf:resource="#Vulnerability"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#mitigates">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  <rdfs:domain rdf:resource="#Mitigation"/>
+  <rdfs:range rdf:resource="#Vulnerability"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#hasCVSSScore">
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+  <rdfs:domain rdf:resource="#Vulnerability"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+
+<owl:Class rdf:about="#System"/>
+
+<owl:Class rdf:about="#Attack"/>
+
+<owl:Class rdf:about="#Vulnerability"/>
+
+<owl:Class rdf:about="#Mitigation"/>
+
+<owl:Class rdf:about="#AdministrativeControl">
+  <rdfs:subClassOf rdf:resource="#Mitigation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Critical">
+  <rdfs:subClassOf rdf:resource="#RiskLevel"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RiskLevel"/>
+
+<owl:Class rdf:about="#CriticalVulnerability">
+  <rdfs:subClassOf rdf:resource="#Vulnerability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Hacker">
+  <rdfs:subClassOf rdf:resource="#ThreatActor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ThreatActor"/>
+
+<owl:Class rdf:about="#High">
+  <rdfs:subClassOf rdf:resource="#RiskLevel"/>
+</owl:Class>
+
+<owl:Class rdf:about="#HighRiskSystem">
+  <rdfs:subClassOf rdf:resource="#System"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Insider">
+  <rdfs:subClassOf rdf:resource="#ThreatActor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Low">
+  <rdfs:subClassOf rdf:resource="#RiskLevel"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Malware">
+  <rdfs:subClassOf rdf:resource="#Attack"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Medium">
+  <rdfs:subClassOf rdf:resource="#RiskLevel"/>
+</owl:Class>
+
+<owl:Class rdf:about="#NationState">
+  <rdfs:subClassOf rdf:resource="#ThreatActor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#PhysicalControl">
+  <rdfs:subClassOf rdf:resource="#Mitigation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ransomware">
+  <rdfs:subClassOf rdf:resource="#Attack"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ScriptKiddie">
+  <rdfs:subClassOf rdf:resource="#ThreatActor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Server">
+  <rdfs:subClassOf rdf:resource="#System"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SoftwareVulnerability">
+  <rdfs:subClassOf rdf:resource="#Vulnerability"/>
+</owl:Class>
+
+<owl:Class rdf:about="#TechnicalControl">
+  <rdfs:subClassOf rdf:resource="#Mitigation"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Workstation">
+  <rdfs:subClassOf rdf:resource="#System"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#Database">
+  <rdf:type rdf:resource="#Server"/>
+  <dependsOn rdf:resource="#StorageFisico"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#StorageFisico">
+  <rdf:type rdf:resource="#Server"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Log4Shell">
+  <rdf:type rdf:resource="#SoftwareVulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#float">10.0</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Finance">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#Log4Shell"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WebServer">
+  <rdf:type rdf:resource="#Server"/>
+  <dependsOn rdf:resource="#Database"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1001">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.8</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1002">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.0</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1003">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.3</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1004">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.3</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1005">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.9</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1006">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.8</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1007">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1008">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.6</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1009">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.2</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CVE_2025_1010">
+  <rdf:type rdf:resource="#Vulnerability"/>
+  <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.8</hasCVSSScore>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#WannaCry_0">
+  <rdf:type rdf:resource="#Attack"/>
+  <exploits rdf:resource="#CVE_2025_1008"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Log4Shell_Exploit_1">
+  <rdf:type rdf:resource="#Attack"/>
+  <exploits rdf:resource="#CVE_2025_1009"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Phishing_Campaign_2">
+  <rdf:type rdf:resource="#Attack"/>
+  <exploits rdf:resource="#CVE_2025_1007"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DDoS_Botnet_3">
+  <rdf:type rdf:resource="#Attack"/>
+  <exploits rdf:resource="#CVE_2025_1010"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_1">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1010"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_2">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1002"/>
+  <dependsOn rdf:resource="#Server_Production_1"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_3">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1001"/>
+  <dependsOn rdf:resource="#Server_Production_2"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_4">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1010"/>
+  <dependsOn rdf:resource="#Server_Production_3"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_5">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1002"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_6">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1003"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_7">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1005"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_8">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1009"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_9">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1010"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_10">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1002"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_11">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1004"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_12">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1004"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_13">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1003"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_14">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1008"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_15">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1008"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_16">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1009"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_17">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1001"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_18">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1003"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_19">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1006"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Server_Production_20">
+  <rdf:type rdf:resource="#Server"/>
+  <hasVulnerability rdf:resource="#CVE_2025_1005"/>
+</owl:NamedIndividual>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+
+<swrl:Variable rdf:about="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/score"/>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#Vulnerability"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:DatavaluedPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="#hasCVSSScore"/>
+              <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+              <swrl:argument2 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/score"/>
+            </swrl:DatavaluedPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:BuiltinAtom>
+                  <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                  <swrl:arguments>
+                    <rdf:List>
+                      <rdf:first rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/score"/>
+                      <rdf:rest>
+                        <rdf:List>
+                          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.0</rdf:first>
+                        </rdf:List>
+                      </rdf:rest>
+                    </rdf:List>
+                  </swrl:arguments>
+                </swrl:BuiltinAtom>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#CriticalVulnerability"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CriticalRule</rdfs:label>
+</swrl:Imp>
+
+<swrl:Imp>
+  <swrl:body>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#System"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest>
+        <swrl:AtomList>
+          <rdf:first>
+            <swrl:IndividualPropertyAtom>
+              <swrl:propertyPredicate rdf:resource="#hasVulnerability"/>
+              <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+              <swrl:argument2 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+            </swrl:IndividualPropertyAtom>
+          </rdf:first>
+          <rdf:rest>
+            <swrl:AtomList>
+              <rdf:first>
+                <swrl:ClassAtom>
+                  <swrl:classPredicate rdf:resource="#CriticalVulnerability"/>
+                  <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+                </swrl:ClassAtom>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </swrl:AtomList>
+          </rdf:rest>
+        </swrl:AtomList>
+      </rdf:rest>
+    </swrl:AtomList>
+  </swrl:body>
+  <swrl:head>
+    <swrl:AtomList>
+      <rdf:first>
+        <swrl:ClassAtom>
+          <swrl:classPredicate rdf:resource="#HighRiskSystem"/>
+          <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+        </swrl:ClassAtom>
+      </rdf:first>
+      <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    </swrl:AtomList>
+  </swrl:head>
+  <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RiskRule</rdfs:label>
+</swrl:Imp>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Hacker"/>
+    <rdf:Description rdf:about="#Insider"/>
+    <rdf:Description rdf:about="#NationState"/>
+    <rdf:Description rdf:about="#ScriptKiddie"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Critical"/>
+    <rdf:Description rdf:about="#High"/>
+    <rdf:Description rdf:about="#Low"/>
+    <rdf:Description rdf:about="#Medium"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#AdministrativeControl"/>
+    <rdf:Description rdf:about="#PhysicalControl"/>
+    <rdf:Description rdf:about="#TechnicalControl"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>

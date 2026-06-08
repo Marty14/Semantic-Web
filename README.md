@@ -56,59 +56,61 @@ Il progetto utilizza un ecosistema di tecnologie integrate:
 apply_swrl_rules.py
 Scopo: Applicare manualmente le regole SWRL
 
-Cosa fa:
+**Cosa fa:**
 
-Carica cyberseconto_populated.owl
+**1.** Carica cyberseconto_populated.owl
 
-Applica Regola 1 (CriticalVulnerability): Classifica vulnerabilità con CVSS > 8.0
+**2.** Applica Regola 1 (CriticalVulnerability): Classifica vulnerabilità con CVSS > 8.0
 
-Applica Regola 2 (HighRiskSystem): Identifica sistemi con vulnerabilità critiche
+**3.** Applica Regola 2 (HighRiskSystem): Identifica sistemi con vulnerabilità critiche
 
-Salva risultati in cyberseconto_inferred.owl
+**4.** Salva risultati in cyberseconto_inferred.owl
 
-Stampa report dettagliato
+**5.** Stampa report dettagliato
 
-Come usarlo:
-python3 apply_swrl_rules.py
-test_sparql.py
-Scopo: Testare l'ontologia con query SPARQL
+**Come usarlo:**
+### `python3 apply_swrl_rules.py`
+### `test_sparql.py`
+
+**Scopo**: Testare l'ontologia con query SPARQL
 
 Cosa fa: Esegue 7 query SPARQL complete:
 
-Query 1 - Trova sistemi ad alto rischio (HighRiskSystem)
+**Query 1** - Trova sistemi ad alto rischio (HighRiskSystem)
 
-Query 2 - Trova vulnerabilità critiche (CVSS > 8.0)
+**Query 2** - Trova vulnerabilità critiche (CVSS > 8.0)
 
-Query 3 - Lista tutti i sistemi con le loro vulnerabilità
+**Query 3** - Lista tutti i sistemi con le loro vulnerabilità
 
-Query 4 - Mostra attacchi e vulnerabilità sfruttate
+**Query 4** - Mostra attacchi e vulnerabilità sfruttate
 
-Query 5 - Identifica sistemi potenzialmente attaccabili
+**Query 5** - Identifica sistemi potenzialmente attaccabili
 
-Query 6 - Statistiche distribuzione vulnerabilità per severità
+**Query 6** - Statistiche distribuzione vulnerabilità per severità
 
-Query 7 - Mostra dipendenze tra sistemi
+**Query 7** - Mostra dipendenze tra sistemi
 
 Come usarlo:
 
-Bash
-python3 test_sparql.py
-debug_onto.py e debug_properties.py
+### Bash
+### python3 test_sparql.py
+### debug_onto.py e debug_properties.py
 Scopo: Script di debug per ispezionare ontologia
 
 Uso: Temporaneo, per sviluppo
 
 Cosa fanno:
 
-debug_onto.py - Elenca tutte le classi e individui nell'ontologia
+**debug_onto.py** - Elenca tutte le classi e individui nell'ontologia
 
-debug_properties.py - Elenca tutte le proprietà (object e data)
+**debug_properties.py** - Elenca tutte le proprietà (object e data)
 
 Come usarli:
 
 Bash
-python3 debug_onto.py
-python3 debug_properties.py
+### python3 debug_onto.py
+### python3 debug_properties.py
+
 Come Usare il Progetto
 Setup Iniziale
 Installa dipendenze:
@@ -120,23 +122,24 @@ Verifica Java (per tentativi con reasoner, opzionale):
 Bash
 java -version
 Workflow Completo
-Passo 1: Popolare l'Ontologia
+**Passo 1: Popolare l'Ontologia**
 
 Bash
 python3 popolamento.py
 Output: cyberseconto_populated.owl
 
-Passo 2: Applicare Regole SWRL
+**Passo 2: Applicare Regole SWRL**
 
 Bash
 python3 apply_swrl_rules.py
 Output: cyberseconto_inferred.owl
 
-Passo 3: Testare con Query SPARQL
+**Passo 3: Testare con Query SPARQL**
 
 Bash
 python3 test_sparql.py
-Passo 4: Visualizzare in Protégé
+
+**Passo 4: Visualizzare in Protégé**
 Apri cyberseconto_inferred.owl in Protégé per la visualizzazione grafica delle inferenze.
 
 Struttura delle Directory
@@ -152,6 +155,3 @@ semantic_web/
 ├── debug_properties.py            
 └── README.md
 
-**Come usarlo:**
-```bash
-python3 popolamento.py

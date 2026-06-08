@@ -119,6 +119,7 @@ Bash
 pip3 install owlready2
 Verifica Java (per tentativi con reasoner, opzionale):
 
+
 Bash
 java -version
 Workflow Completo

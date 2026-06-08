@@ -1,3 +1,45 @@
+# 🛡️ CyberSecOnto - Un'Ontologia per la Cybersecurity
+
+**CyberSecOnto** è un'ontologia OWL nel dominio della cybersecurity sviluppata per superare i limiti dei tradizionali database relazionali. Modella le relazioni implicite tra sistemi informatici, vulnerabilità, attacchi e mitigazioni, trasformando un inventario statico in un sistema di analisi automatica del rischio aziendale.
+
+Progetto realizzato per il corso di **Web Reasoning** (Prof.ssa Marianna Nicolosi Asmundo), Università degli Studi di Catania.
+
+---
+
+## 📋 Indice
+1. [Panoramica delle Tecnologie](#panoramica-delle-tecnologie)
+2. [Struttura delle Directory](#struttura-delle-directory)
+3. [File dell'Ontologia](#file-dellontologia)
+4. [Script Python e Automazione](#script-python-e-automazione)
+5. [Come Usare il Progetto](#come-usare-il-progetto)
+
+---
+
+## Panoramica delle Tecnologie
+Il progetto utilizza un ecosistema integrato:
+* **OWL:** per la definizione strutturata delle classi, proprietà e restrizioni (T-Box).
+* **SWRL:** per le regole di inferenza (es. calcoli matematici sui punteggi).
+* **SPARQL:** per interrogare la base di conoscenza e generare report.
+* **Python + owlready2:** per il popolamento procedurale e il testing automatizzato.
+
+---
+
+## Struttura delle Directory
+
+```text
+semantic_web/
+├── Untitled.rdf                    # Scheletro vuoto iniziale
+├── cyberseconto_populated.owl      # Dati generati (A-Box)
+├── cyberseconto_inferred.owl       # Ontologia finale con inferenze
+├── popolamento.py                  # Script di generazione dati
+├── apply_swrl_rules.py             # Motore inferenziale SWRL
+├── test_sparql.py                  # Suite di query
+├── debug_onto.py                   # Utility di ispezione
+├── debug_properties.py             # Utility di ispezione
+└── README.md                       # Questa documentazione
+
+
+
 # 🛡️ CyberSecOnto: Un'Ontologia per la Cybersecurity
 **CyberSecOnto** è un progetto accademico basato sulle tecnologie del Web Semantico, sviluppato per superare i limiti dei tradizionali database relazionali nella gestione della sicurezza informatica.Trasforma un inventario statico di asset in un **sistema di analisi proattiva del rischio**, capace di dedurre automaticamente le minacce sfruttando regole logiche e inferenziali.
 
@@ -31,6 +73,7 @@ Il progetto è suddiviso in tre fasi, rappresentate dall'evoluzione dei file ont
 * `debug_onto.py` / `debug_properties.py`: Utility per l'ispezione della struttura.
 
 ---
+
 
 ## 🚀 Come Iniziare
 

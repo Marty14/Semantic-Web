@@ -1,0 +1,925 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#"
+     xml:base="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#dependsOn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#dependsOn">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#exploits -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#exploits">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasVulnerability -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasVulnerability">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#mitigates -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#mitigates">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Mitigation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasCVSSScore -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasCVSSScore">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#AdministrativeControl -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#AdministrativeControl">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Mitigation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#exploits"/>
+                <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Critical -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Critical">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Hacker -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Hacker">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ThreatActor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#High -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#High">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Insider -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Insider">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ThreatActor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Low -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Low">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Malware -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Malware">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Medium -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Medium">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#RiskLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Mitigation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Mitigation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#mitigates"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#NationState -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#NationState">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ThreatActor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#PhysicalControl -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#PhysicalControl">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Mitigation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Ransomware -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Ransomware">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#RiskLevel -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#RiskLevel"/>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ScriptKiddie -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ScriptKiddie">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ThreatActor"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#SoftwareVulnerability -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#SoftwareVulnerability">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#TechnicalControl -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#TechnicalControl">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Mitigation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ThreatActor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ThreatActor"/>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasCVSSScore"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#VulnerableSystem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#VulnerableSystem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasVulnerability"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Workstation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Workstation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1001 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1001">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.8</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1002 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1002">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.0</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1003 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1003">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.3</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1004 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1004">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.3</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1005 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1005">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.9</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1006 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1006">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.8</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1007 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1007">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1008 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1008">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.6</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1009 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1009">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.2</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1010 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1010">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.8</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#DDoS_Botnet_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#DDoS_Botnet_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+        <exploits rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1010"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Database -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Database">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <dependsOn rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#StorageFisico"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Log4Shell -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Log4Shell">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#SoftwareVulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Log4Shell_Exploit_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Log4Shell_Exploit_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+        <exploits rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1009"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Phishing_Campaign_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Phishing_Campaign_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+        <exploits rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1007"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Finance -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Finance">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Log4Shell"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1010"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1002"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1004"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1004"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1003"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1008"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1008"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_16">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1009"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_17 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_17">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1001"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_18 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_18">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1003"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_19 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_19">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1006"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <dependsOn rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_1"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1002"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_20 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_20">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1005"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <dependsOn rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_2"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1001"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <dependsOn rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_3"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1010"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1002"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1003"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1005"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1009"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Production_9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1010"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Test_Automatico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server_Test_Automatico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+        <hasVulnerability rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Log4Shell"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#StorageFisico -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#StorageFisico">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vuln_Test_Errore -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vuln_Test_Errore">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#SoftwareVulnerability"/>
+        <hasCVSSScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</hasCVSSScore>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#WannaCry_0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#WannaCry_0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Attack"/>
+        <exploits rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CVE_2025_1008"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#WebServer -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#WebServer">
+        <rdf:type rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Server"/>
+        <dependsOn rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Database"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#AdministrativeControl"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#PhysicalControl"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#TechnicalControl"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Critical"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#High"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Low"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Medium"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Hacker"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Insider"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#NationState"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#ScriptKiddie"/>
+        </owl:members>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#v">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#score">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>RiskRule</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#System"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasVulnerability"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/v"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#HighRiskSystem"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/2025/11/untitled-ontology-2/s"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+        <rdfs:comment></rdfs:comment>
+        <rdfs:label>CriticalRule</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#Vulnerability"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#hasCVSSScore"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#v"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#score"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                        <swrl:arguments>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#score"/>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </swrl:arguments>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#CriticalVulnerability"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/salvleanza/ontologies/cybersOnto#v"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

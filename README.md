@@ -25,11 +25,11 @@ Il progetto utilizza un ecosistema di tecnologie integrate:
 
 ## File dell'Ontologia
 
-### `Untitled_2.rdf`
+### `Untitled.rdf`
 **Tipo:** Ontologia OWL originale (formato RDF/XML)  
 **Descrizione:** Questo è il file principale dell'ontologia creato inizialmente con Protégé, sostituito poi con il file `cyberseconto_inferred.owl` sul quale sono state applicate tutte le modifiche necessarie al fine di usarlo come file finale. 
 
-### `cyberseconto_populated_2.owl`
+### `cyberseconto_populated.owl`
 **Tipo:** Ontologia popolata con dati di test  
 **Descrizione:** Versione dell'ontologia dopo l'esecuzione di `popolamento.py`. 
 
